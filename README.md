@@ -17,9 +17,10 @@ make && sudo ./run_ksentinel && sudo dmesg | grep "KSentinel"
 
 # Start/Stop as Driver
 ```
+gcc -o run_ksentinel run_ksentinel.c
 sudo insmod ksentinel.ko
 sudo rmmod ksentinel
-``
+```
 
 ## Logs:
 ```

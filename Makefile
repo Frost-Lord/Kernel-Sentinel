@@ -1,5 +1,6 @@
 obj-m += ksentinel.o
 obj-m += driver/driver.o
+obj-m += driver/suspicious.o
 
 KERNELDIR ?= /lib/modules/$(shell uname -r)/build
 PWD := $(shell pwd)
