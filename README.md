@@ -25,4 +25,5 @@ sudo rmmod ksentinel
 ## Logs:
 ```
 dmesg
+sudo dmesg | grep "KSentinel"
 ```
