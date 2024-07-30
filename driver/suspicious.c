@@ -4,6 +4,8 @@
 #include <linux/timer.h>
 #include "suspicious.h"
 
+int SusCap = 1000000;
+
 DEFINE_HASHTABLE(ip_table, 8);
 
 struct ip_entry {
@@ -21,7 +23,15 @@ void suspicious(uint32_t src_ip, uint32_t dest_ip) {
     add_ip_to_table(src_ip);
     add_ip_to_table(dest_ip);
 
+    if (src_ip == dest_ip) return;
+    if (src_ip == 0 || dest_ip == 0) return;
 
+    if (src_ip >= SusCap || dest_ip >= SusCap) {
+        printk(KERN_INFO "[KSentinel] Suspicious connection detected: src_ip=%pI4, dest_ip=%pI4\n",
+               &src_ip, &dest_ip);
+        
+    }
+    return;
 }
 
 static void add_ip_to_table(uint32_t ip) {
